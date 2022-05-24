@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <Meta charset="UTF-8">
+    <title>割り勘計算</title>
+</head>
+<body>
+<h1>割り勘計算</h1>
+<P>代金:<input id="amount" type="number" placeholder="支払い"></P>
+<P>人数:<input id="num" type="number"placeholder="人数"></P>
+<P><input type="button" value="計算する" onclick="getResult()"></P>
+<P id="result"></P>
+
+<script>
+    function getResult(){
+        console.log("GetResult")
+        // 値を取得
+            var amount = document.getElementById("amount").value;
+            console.log(amount);
+            var num = document.getElementById("num").value;
+            console.log(num);
+            if(!amount || !num){
+                alert("数字をいれて");
+            }
+        //取得した値を計算したい
+        var result = "支払い額"+amount/num;
+        document.getElementById("result").innerHTML=result;
+            
+        //結果を表示したい
+    }
+
+</script>
+</body>
+</html>
