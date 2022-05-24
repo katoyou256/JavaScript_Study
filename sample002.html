@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <Meta charset="UTF-8">
+    <title>割り勘計算</title>
+</head>
+<body>
+<h1>割り勘計算</h1>
+<P>代金:<input id="amount" type="number" placeholder="支払い"></P>
+<P>人数:<input id="num" type="number"placeholder="人数"></P>
+
+<p>丸め:<select id = "roundUnit">
+    <option value="100">100</option>
+    <option value="500">500</option>
+    <option value="1000">1000</option>
+</select></p>
+
+<p>端数処理:<select id="roundType">
+    <option value="0">先輩ご馳走様</option>
+    <option value="1">幹事お疲れ</option>
+</select></p>
+
+
+<P><input type="button" value="計算する" onclick="getResult()"></P>
+<P id="result"></P>
+
+<script>
+    function getResult(){
+        console.log("GetResult")
+        // 値を取得
+            var amount = document.getElementById("amount").value;
+            console.log(amount);
+            var num = document.getElementById("num").value;
+            console.log(num);
+            if(!amount || !num){
+                alert("数字をいれて");
+            }
+            var roundUnit = document.getElementById("roundUnit").value;
+            var roundType = document.getElementById("roundType").value;
+
+        //取得した値を計算したい
+        
+        //var result = "支払い額"+amount/num;
+        //document.getElementById("result").innerHTML=result;
+        // 端数が切り上げか 切り下げか
+            if( roundType === "0"){
+                //切り捨て
+                var payment = Math.floor(amount/num/roundUnit)*roundUnit;
+                var shotage = amount - payment*num;
+                var result ="一人辺りの支払額" + payment + "不足金額" + shotage ;
+
+            } else{
+                //切上げ
+                var payment = Math.ceil(amount/num/roundUnit)*roundUnit;
+                var remainder = payment*num - amount ;
+                var result ="一人辺りの支払額" + payment + "あまり" + remainder ;
+                
+            }
+            console.log(result);
+            document.getElementById("result").innerHTML=result;
+            
+        
+        // 支払いと端数計算
+        
+        //結果を表示したい
+    }
+
+</script>
+</body>
+</html>
